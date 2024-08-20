@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: test-controller
+  jpa:
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      format-sql: true
+  datasource:
+    username: postgres
+    password: 123
+    url: jdbc:postgresql://localhost:5433/test-controller-db
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    enabled: true
+
+logging:
+  level:
+    root: INFO
+    org.springframework.integration: INFO
+  pattern:
+    console: "%clr([%-5level]) %clr(%d{yyy-MM-dd HH:mm:ss.SS}){yellow} [%thread] %clr([%-26logger{26}:%L]:){cyan} requestId:[%X{requestId}] %m%wEx%n"
+
+server:
+  port: 8081
