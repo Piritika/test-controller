@@ -17,7 +17,8 @@ import lombok.experimental.Accessors;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usr_seq")
+    @SequenceGenerator(name = "usr_seq", sequenceName = "usr_seq", initialValue = 1, allocationSize = 1)
     private Long id;
 
     @Column(name = "first_name", nullable = false)

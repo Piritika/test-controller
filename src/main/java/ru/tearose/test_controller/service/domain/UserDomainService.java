@@ -10,5 +10,5 @@ public interface UserDomainService {
 
     User save(User user);
 
-    boolean delete (Long userId);
+    boolean delete(Long userId);
 }

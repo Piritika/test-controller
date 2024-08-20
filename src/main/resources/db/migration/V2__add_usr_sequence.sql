@@ -1,0 +1,1 @@
+create sequence usr_seq start 1 increment 1;
