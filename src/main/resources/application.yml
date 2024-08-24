@@ -2,7 +2,7 @@ spring:
   application:
     name: test-controller
   jpa:
-    show-sql: false
+    show-sql: true
     generate-ddl: false
     hibernate:
       ddl-auto: none

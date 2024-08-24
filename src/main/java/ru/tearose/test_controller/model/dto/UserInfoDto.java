@@ -7,9 +7,7 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class UserDto {
-
-    private Long userId;
+public class UserInfoDto {
 
     @NotBlank
     private String firstName;
