@@ -6,9 +6,9 @@ import java.util.Optional;
 
 public interface UserDomainService {
 
-    Optional<User> getUserById(Long userId);
-
     User save(User user);
 
     boolean delete(Long userId);
+
+    Optional<User> getUserById(Long userId);
 }

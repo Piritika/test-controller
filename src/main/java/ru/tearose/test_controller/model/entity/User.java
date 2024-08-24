@@ -27,6 +27,15 @@ public class User {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    @Column(name = "middle_name")
+    private String middleName;
+
     @Column(name = "age", nullable = false)
     private Integer age;
+
+    @Column(name = "email", nullable = false)
+    private String email;
+
+    @Column(name = "phone_number", nullable = false)
+    private String phoneNumber;
 }

@@ -18,6 +18,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserDomainService domainService;
     private final UserMapper mapper;
+    private final RestTemplateClient restTemplateClient;
 
     @Override
     public UserDto getUserByID(Long userId) {
@@ -30,14 +31,16 @@ public class UserServiceImpl implements UserService {
         return mapper.mapToUserDto(optionalUser.get());
     }
 
+
     @Override
     public UserDto addNewUser(UserDto userDto) {
         log.info("start addNewUser");
 
-        User user = mapper.mapToUser(userDto);
-        User entity = domainService.save(user);
+        checkUser(userDto);
 
-        return mapper.mapToUserDto(entity);
+        User user = saveUser(userDto);
+
+        return mapper.mapToUserDto(user);
     }
 
     @Override
@@ -84,4 +87,18 @@ public class UserServiceImpl implements UserService {
 
         return mapper.mapToUserDto(entity);
     }
+
+    private void checkUser(UserDto userDto) {
+        log.info("start checkUser");
+
+        restTemplateClient.sendPersonalData(mapper.mapToUserInfoDto(userDto));
+    }
+
+    private User saveUser(UserDto userDto) {
+        log.info("start saveUser");
+
+        User user = mapper.mapToUser(userDto);
+        return domainService.save(user);
+    }
+
 }
